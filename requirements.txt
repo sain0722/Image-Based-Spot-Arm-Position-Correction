@@ -1,0 +1,10 @@
+pyqt5
+bosdyn-client 
+bosdyn-mission 
+bosdyn-choreography-client
+opencv-contrib-python==3.4.2.17
+open3d
+matplotlib
+openpyxl
+pandas
+scipy
