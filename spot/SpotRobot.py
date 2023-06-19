@@ -103,7 +103,8 @@ class Robot:
         connect, content = self.create_robot(hostname, username, password)
         if connect:
             self.initialize_robot()
-            return connect, content
+
+        return connect, content
 
     def create_robot(self, hostname, username, password):
         try:
