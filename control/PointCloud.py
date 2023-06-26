@@ -1,13 +1,9 @@
 import copy
-import queue
 from collections import deque
 
 import cv2
 import numpy as np
 import open3d as o3d
-import open3d.visualization.gui as gui
-import open3d.visualization.rendering as rendering
-from matplotlib import pyplot as plt
 
 fx = 217.19888305664062
 fy = 217.19888305664062
@@ -426,21 +422,3 @@ def remove_outlier(coord, q1, q3):
     data_without_outliers = [x for x in coord if lower_bound <= x <= upper_bound]
 
     return data_without_outliers
-
-
-def visualization(*args):
-    # pcd = args[0]
-    # with o3d.utility.VerbosityContextManager(
-    #         o3d.utility.VerbosityLevel.Debug) as cm:
-    #     labels = np.array(
-    #         pcd.cluster_dbscan(eps=0.02, min_points=10, print_progress=True))
-    #
-    # max_label = labels.max()
-    # print(f"point cloud has {max_label + 1} clusters")
-    # colors = plt.get_cmap("tab20")(labels / (max_label if max_label > 0 else 1))
-    # colors[labels < 0] = 0
-    # pcd.colors = o3d.utility.Vector3dVector(colors[:, :3])
-    # o3d.visualization.draw_geometries([pcd])
-
-    o3d.visualization.draw_geometries(args, left=0, top=30, width=1080, height=720)
-    # o3d.visualization.draw([args[0]])
