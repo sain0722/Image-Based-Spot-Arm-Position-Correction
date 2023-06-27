@@ -27,7 +27,7 @@
 - 기존의 방식의 가장 큰 문제점은 **조명 등 외부 요인에 의한 RGB 이미지의 변화**에 매우 취약합니다.
 - SURF를 통해 두 개의 2D 이미지 정합 시, 변환 행렬을 얻을 수 있습니다. 하지만, 이 행렬은 2D 이미지 사이의 변환에 대한 정보만을 제공하며, 3D 공간에 대한 정보를 제공하지 못함을 확인하였습니다.
 
-![Alt text](image-2.png)
+![SURF Result](docs/images/surf_result.png)
 
 ### 2-2. 이미지 취득 및 분석 (3D, Depth)
 - SPOT Arm에 부착되어 있는 ToF(Time-of-Flight) 카메라를 사용하여 Depth 데이터를 획득하였습니다.
@@ -39,14 +39,7 @@
   - 데이터의 손실이 발생한 부분을 보정하기 위해 **Depth 데이터를 여러 번 반복하여 획득**한 후, 해당 위치에서의 데이터를 결합하여 **누적**합니다.
 - 현재 데이터 `curr`과 이전 데이터 `prev`에 대한 누적 데이터 `cumulative`를 구하는 수식은 다음과 같습니다.
 
-<!-- ![img.png](docs/images/Cumulative.png) -->
-\[
-\text{{cumulative}}[i, j] = \begin{cases}
-\text{{curr}}[i, j] & \text{{if }} \text{{prev}}[i, j] = 0 \land \text{{curr}}[i, j] \neq 0 \\
-\text{{prev}}[i, j] & \text{{if }} \text{{prev}}[i, j] \neq 0 \land \text{{curr}}[i, j] = 0 \\
-\frac{{\text{{prev}}[i, j] + \text{{curr}}[i, j]}}{2} & \text{{if }} \text{{prev}}[i, j] \neq 0 \land \text{{curr}}[i, j] \neq 0 \\
-\end{cases}
-\]
+![Cumulative](docs/images/Cumulative.png)
 
 #### ② 포인트 클라우드 획득
 - 누적하여 획득한 Depth 데이터를 3D Point Cloud로 변환합니다.
