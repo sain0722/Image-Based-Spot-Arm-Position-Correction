@@ -27,7 +27,7 @@
 - 기존의 방식의 가장 큰 문제점은 **조명 등 외부 요인에 의한 RGB 이미지의 변화**에 매우 취약합니다.
 - SURF를 통해 두 개의 2D 이미지 정합 시, 변환 행렬을 얻을 수 있습니다. 하지만, 이 행렬은 2D 이미지 사이의 변환에 대한 정보만을 제공하며, 3D 공간에 대한 정보를 제공하지 못함을 확인하였습니다.
 
-![Alt text](image-2.png)
+![SURF Result](docs/images/surf_result.png)
 
 ### 2-2. 이미지 취득 및 분석 (3D, Depth)
 - SPOT Arm에 부착되어 있는 ToF(Time-of-Flight) 카메라를 사용하여 Depth 데이터를 획득하였습니다.
