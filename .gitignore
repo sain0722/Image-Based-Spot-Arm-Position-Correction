@@ -1,3 +1,9 @@
 .idea
 
 **/__pycache__
+
+# Set Code to Private.
+control
+model
+spot
+view
