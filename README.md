@@ -39,14 +39,7 @@
   - 데이터의 손실이 발생한 부분을 보정하기 위해 **Depth 데이터를 여러 번 반복하여 획득**한 후, 해당 위치에서의 데이터를 결합하여 **누적**합니다.
 - 현재 데이터 `curr`과 이전 데이터 `prev`에 대한 누적 데이터 `cumulative`를 구하는 수식은 다음과 같습니다.
 
-<!-- ![img.png](docs/images/Cumulative.png) -->
-\[
-\text{{cumulative}}[i, j] = \begin{cases}
-\text{{curr}}[i, j] & \text{{if }} \text{{prev}}[i, j] = 0 \land \text{{curr}}[i, j] \neq 0 \\
-\text{{prev}}[i, j] & \text{{if }} \text{{prev}}[i, j] \neq 0 \land \text{{curr}}[i, j] = 0 \\
-\frac{{\text{{prev}}[i, j] + \text{{curr}}[i, j]}}{2} & \text{{if }} \text{{prev}}[i, j] \neq 0 \land \text{{curr}}[i, j] \neq 0 \\
-\end{cases}
-\]
+![Cumulative](docs/images/Cumulative.png)
 
 #### ② 포인트 클라우드 획득
 - 누적하여 획득한 Depth 데이터를 3D Point Cloud로 변환합니다.
