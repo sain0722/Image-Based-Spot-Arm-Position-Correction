@@ -4,6 +4,7 @@
 
 ### 1-1. 과제 개요
 - 본 과제는 Boston Dynamics의 로봇 `SPOT`을 사용한 실시간 조립 품질 검사를 수행할 때, `로봇의 Arm 정밀 제어 기술` 개발에 집중합니다.
+- 실시간 조립 품질 검사를 수행할 때, 
 - 기존의 방식인 2D 이미지의 SURF 알고리즘을 통한 정합에는 조명 등의 외부 요인에 취약하다는 단점이 있습니다.
 - 이를 위해 우리는 이미지 분석을 활용한 위치 보정 알고리즘을 개발하고, 로봇 Arm의 피드백 제어 매커니즘을 개선하였습니다.
 - 이러한 개선을 통해 로봇 Arm의 동작 정확도를 향상시키고, 이를 통한 실시간 조립 품질 검사의 정확성을 높이는 것이 본 과제의 주요 목표입니다.
@@ -26,7 +27,7 @@
 - 기존의 방식의 가장 큰 문제점은 **조명 등 외부 요인에 의한 RGB 이미지의 변화**에 매우 취약합니다.
 - SURF를 통해 두 개의 2D 이미지 정합 시, 변환 행렬을 얻을 수 있습니다. 하지만, 이 행렬은 2D 이미지 사이의 변환에 대한 정보만을 제공하며, 3D 공간에 대한 정보를 제공하지 못함을 확인하였습니다.
 
-[이미지]
+![Alt text](image-2.png)
 
 ### 2-2. 이미지 취득 및 분석 (3D, Depth)
 - SPOT Arm에 부착되어 있는 ToF(Time-of-Flight) 카메라를 사용하여 Depth 데이터를 획득하였습니다.
@@ -143,7 +144,7 @@ ICP 알고리즘의 작동 과정은 다음과 같습니다:
 
 ICP 알고리즘은 반복적인 과정을 통해 점진적으로 두 개의 포인트 클라우드를 맞추는 방식으로 작동합니다. 이를 통해 변환 행렬을 추정하고, 오차를 최소화하여 두 포인트 클라우드를 정렬하는 것이 목표입니다.
 
-![visualize_icp_iteration](docs/images/visualize_icp_iteration.gif)
+![visualize_icp_iteration](https://github.com/sain0722/Image-Based-Spot-Arm-Position-Correction/blob/main/docs/images/visualize_icp_iteration.gif?raw=true)
 
 *그림. ICP 알고리즘을 사용하여 두 포인트 클라우드가 정합되는 과정*
 
@@ -238,11 +239,11 @@ T = | R t |
 - 원본(Source)에 등록되는 데이터는 `2D RGB 이미지`, `3D Depth(Point Cloud)` 입니다.
 
 <figure style="display: inline-block;">
-  <img src="docs/images/source_hand_color.jpg" alt="source_hand_color.jpg" width="300" height="200">
+  <img src="https://github.com/sain0722/Image-Based-Spot-Arm-Position-Correction/blob/main/docs/images/source_hand_color.jpg?raw=true" alt="source_hand_color.jpg" width="300" height="200">
   <figcaption>Source 에 등록된 2D RGB 이미지</figcaption>
 </figure>
 <figure style="display: inline-block;">
-  <img src="docs/images/point_cloud.gif" alt="source_pointcloud.ply" width="300" height="200">
+  <img src="https://github.com/sain0722/Image-Based-Spot-Arm-Position-Correction/blob/main/docs/images/point_cloud.gif?raw=true" alt="source_pointcloud.ply" width="300" height="200">
   <figcaption>Source 에 등록된 3D Depth(Point Cloud)</figcaption>
 </figure>
 
@@ -287,9 +288,9 @@ T = | R t |
 - 보정된 위치에서 SPOT은 새롭게 데이터를 획득합니다.
 
 ***보정결과 1***
-![보정 결과 이미지 1](docs/images/correct_result_1.png)
+![보정 결과 이미지 1](https://github.com/sain0722/Image-Based-Spot-Arm-Position-Correction/blob/main/docs/images/correct_result_1.png?raw=true)
 ***보정결과 2***
-![보정 결과 이미지 2](docs/images/correct_result_2.png)
+![보정 결과 이미지 2](https://github.com/sain0722/Image-Based-Spot-Arm-Position-Correction/blob/main/docs/images/correct_result_2.png?raw=true)
 
 - 이 결과, SPOT Arm의 위치가 성공적으로 보정되었음을 확인하였습니다. 보정된 위치에서 촬영한 이미지와 Point Cloud 데이터는 원래의 Source 데이터와 더욱 잘 일치하는 것을 확인하였습니다. 
 - 이로써, 실제 환경에서의 오차를 줄이고 로봇 Arm의 위치 정확도를 높여 실시간 조립 품질 검사의 정확도를 향상시키는 것이 가능합니다.
